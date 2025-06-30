@@ -1,0 +1,18 @@
+{
+	"duration" : 1800,
+    "overlap" : 0.5,
+    "desired_fs" : 20000,
+    "channel" : 0,
+	"max_duration": 3600,
+	"log": false, 
+	"color": false,
+	
+	"nfft" : 4000,
+    "win_len" : 4000,
+    "hop_ratio" : 0.5,
+
+    "wavs_folder" : "/mnt/fscompute_shared/roi/datasets/irene_vessels/raw_audio",
+    "dataset_folder" : "/mnt/fscompute_shared/roi/datasets/irene_vessels",
+	
+	"annotations_file": "/mnt/fscompute_shared/roi/datasets/irene_vessels/RavenFiles/"
+}

@@ -1,0 +1,10 @@
+path:  '/mnt/fscompute_shared/roi/'
+train: '/mnt/fscompute_shared/roi/datasets/irene_vessels/train'
+val: '/mnt/fscompute_shared/roi/datasets/irene_vessels/valid'
+
+#Classes
+nc: 1
+
+#classes names
+#replace all class names list with your classes names
+names: ['ship']
