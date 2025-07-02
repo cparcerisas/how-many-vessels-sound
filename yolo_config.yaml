@@ -3,8 +3,8 @@ train: '/mnt/fscompute_shared/roi/datasets/irene_vessels/train'
 val: '/mnt/fscompute_shared/roi/datasets/irene_vessels/valid'
 
 #Classes
-nc: 1
+nc: 2
 
 #classes names
 #replace all class names list with your classes names
-names: ['ship']
+names: ['shipA', 'shipB']

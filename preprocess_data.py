@@ -113,6 +113,7 @@ class YOLODataset:
                             if len(chunk) < self.blocksize:
                                 chunk = F_general.pad(chunk, (0, self.blocksize - len(chunk)))
 
+                            print('creating spectrogram', i)
                             img, f = self.create_chunk_spectrogram(chunk)
 
                             if model is not None:
@@ -140,7 +141,7 @@ class YOLODataset:
                                 else:
                                     Image.fromarray(np.flipud(img)).save(img_path)
                             plt.close()
-                        i += self.overlap
+                        i += 1 - self.overlap
 
         def create_chunk_spectrogram(self, chunk):
             f, t, sxx = scipy.signal.spectrogram(chunk, fs=self.desired_fs, window=('hann'),
@@ -173,8 +174,8 @@ class YOLODataset:
             f_bandwidth = (self.desired_fs / 2) - self.F_MIN
             for selections_path, selections in self.load_relevant_selection_table(labels_to_exclude=labels_to_exclude):
                 print(selections_path)
-                selections = selections.loc[selections['ShipClass'] != '0']
-                selections.ShipClass = selections.ShipClass.replace({'A': 0, 'B': 0, '?': 0}).astype(int)
+                selections = selections.loc[selections['ShipClass'].isin(['A', 'B'])]
+                selections.ShipClass = selections.ShipClass.replace({'A': 0, 'B': 1}).astype(int)
                 selections.loc[selections['Low Freq (Hz)'] < self.F_MIN, 'Low Freq (Hz)'] = self.F_MIN
                 selections['height'] = (selections['High Freq (Hz)'] - selections['Low Freq (Hz)']) / f_bandwidth
 
